@@ -1,14 +1,17 @@
-package reader
+package Reader
 
 import (
 	"encoding/csv"
 	"os"
+
+	"github.com/olekukonko/tablewriter"
 )
 
 type CSVReader struct {
 	FileName string
 	FilePath string
 	Encoder  *csv.Reader
+	Cache    *Cache
 }
 
 func NewCSVReader(fileName, filePath string) *CSVReader {
@@ -36,10 +39,28 @@ func (c *CSVReader) Read() ([][]string, error) {
 
 }
 
-func (c *CSVReader) Connect() error {
-	return nil
+func (c *CSVReader) Connect() (error, string) {
+	records, err := c.Read()
+	if err != nil {
+		return err, err.Error()
+	}
+
+	c.Cache = NewCache(records)
+	// fmt.Println(c.Cache.Data)
+	return nil, "stored to the cache!"
+
 }
 
 func (c *CSVReader) Display() string {
-	return "Displaying the cache read from csv"
+	records := c.Cache.Data
+
+	table := tablewriter.NewWriter(os.Stdout)
+	table.SetHeader(records[0])
+
+	for _, row := range records[1:] {
+		table.Append(row)
+	}
+
+	table.Render()
+	return "CSV data displayed successfully!"
 }

@@ -3,11 +3,11 @@ package main
 import (
 	"fmt"
 
-	"github.com/yaojiejia/chariot/reader"
+	Reader "github.com/yaojiejia/chariot/reader"
 )
 
 func main() {
-	r := reader.NewCSVReader("test.csv", "melb_data.csv")
+	r := Reader.NewAPIReader("https://api.mockae.com/fakeapi/products/2", "")
 	fmt.Println(r.Read())
 
 }
