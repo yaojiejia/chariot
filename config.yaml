@@ -1,5 +1,7 @@
-host: 
-port: 
-user: 
-password: 
-database: 
+host: "localhost"
+port: "5432"
+user: "alex"
+password: "jiayaojie0715"
+database: "newdb"
+apiURL:
+apiKey:
