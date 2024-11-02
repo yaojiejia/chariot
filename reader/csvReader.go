@@ -3,8 +3,6 @@ package Reader
 import (
 	"encoding/csv"
 	"os"
-
-	"github.com/olekukonko/tablewriter"
 )
 
 type CSVReader struct {
@@ -40,27 +38,27 @@ func (c *CSVReader) Read() ([][]string, error) {
 }
 
 func (c *CSVReader) Connect() (error, string) {
-	records, err := c.Read()
-	if err != nil {
-		return err, err.Error()
-	}
+	// records, err := c.Read()
+	// if err != nil {
+	// 	return err, err.Error()
+	// }
 
-	c.Cache = NewCache(records)
+	// c.Cache = NewCache(records)
 	// fmt.Println(c.Cache.Data)
 	return nil, "stored to the cache!"
 
 }
 
 func (c *CSVReader) Display() string {
-	records := c.Cache.Data
+	// records := c.Cache.Data
 
-	table := tablewriter.NewWriter(os.Stdout)
-	table.SetHeader(records[0])
+	// table := tablewriter.NewWriter(os.Stdout)
+	// table.SetHeader(records[0])
 
-	for _, row := range records[1:] {
-		table.Append(row)
-	}
+	// for _, row := range records[1:] {
+	// 	table.Append(row)
+	// }
 
-	table.Render()
+	// table.Render()
 	return "CSV data displayed successfully!"
 }

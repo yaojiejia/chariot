@@ -1,9 +1,14 @@
 package Reader
 
-import "fmt"
+import (
+	"testing"
+)
 
-func readerTest() {
+func readerTest(t *testing.T) {
 	r := NewAPIReader("https://api.mockae.com/fakeapi/products/2", "")
 
-	fmt.Println(r.Read())
+	data, _ := r.Read()
+	if data == "" {
+		t.Errorf("data is empty")
+	}
 }

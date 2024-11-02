@@ -1,7 +1,7 @@
-host: "localhost"
-port: "5432"
-user: "alex"
-password: "jiayaojie0715"
-database: "newdb"
+host: 
+port: 
+user: 
+password: 
+database: 
 apiURL:
 apiKey:

@@ -35,11 +35,11 @@ func (a *APIReader) Read() (string, error) {
 }
 
 func (a *APIReader) Connect() (error, string) {
-	data, err := a.Read()
-	if err != nil {
-		return err, err.Error()
-	}
+	// data, err := a.Read()
+	// if err != nil {
+	// 	return err, err.Error()
+	// }
 
-	a.Cache = NewCache([][]string{{data}})
+	// a.Cache = NewCache([][]string{{data}})
 	return nil, "stored to the cache!"
 }
