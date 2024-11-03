@@ -25,6 +25,8 @@ func NewCache() *Cache {
 	}
 }
 
+
+
 // Set is a method that sets the key-value pair in the cache
 func (c *Cache) Set(key string, value string) error {
 	err := c.client.Set(ctx, key, value, 0).Err()

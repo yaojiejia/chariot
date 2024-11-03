@@ -1,6 +1,7 @@
 package Reader
 
 import (
+	"encoding/json"
 	"io"
 	"net/http"
 )
@@ -15,7 +16,40 @@ func NewAPIReader(apiURL, apiKey string) *APIReader {
 	return &APIReader{
 		APIURL: apiURL,
 		APIKey: apiKey,
+		Cache:  NewCache(),
 	}
+}
+
+func (a *APIReader) ReadAndCache() error {
+	// Read data from API
+	data, err := a.Read()
+	if err != nil {
+		return err
+	}
+
+	// Parse JSON data
+	var jsonData map[string]interface{}
+	err = json.Unmarshal([]byte(data), &jsonData)
+	if err != nil {
+		return err
+	}
+
+	// Store each object in Redis cache
+	for key, value := range jsonData {
+		// Convert value back to JSON string
+		valueJSON, err := json.Marshal(value)
+		if err != nil {
+			return err
+		}
+
+		// Store in Redis using the object's key
+		err = a.Cache.Set(key, string(valueJSON))
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
 }
 
 func (a *APIReader) Read() (string, error) {

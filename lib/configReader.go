@@ -15,8 +15,8 @@ type Config struct {
 }
 
 func (c *Config) GetConfig() *Config {
-	pwd, _ := os.Getwd()
-	yamlFile, err := os.ReadFile(pwd + "/config.yaml")
+
+	yamlFile, err := os.ReadFile("../config.yaml")
 	if err != nil {
 		panic(err)
 	}
