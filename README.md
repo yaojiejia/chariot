@@ -1,8 +1,9 @@
 # Go Data Pipeline
 
 ![Go](https://img.shields.io/badge/Language-Go-blue)
+[![CodeFactor](https://www.codefactor.io/repository/github/yaojiejia/chariot/badge)](https://www.codefactor.io/repository/github/yaojiejia/chariot)
 ![License](https://img.shields.io/badge/License-MIT-green)
-![Build](https://github.com/yourusername/go-data-pipeline/actions/workflows/main.yml/badge.svg)
+
 
 ## Introduction
 
