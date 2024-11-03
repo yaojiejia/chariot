@@ -2,6 +2,7 @@
 
 ![Go](https://img.shields.io/badge/Language-Go-blue)
 [![CodeFactor](https://www.codefactor.io/repository/github/yaojiejia/chariot/badge)](https://www.codefactor.io/repository/github/yaojiejia/chariot)
+[![Go Report Card](https://goreportcard.com/badge/github.com/yaojiejia/chariot)](https://goreportcard.com/report/github.com/yaojiejia/chariot)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
 
