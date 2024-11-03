@@ -4,21 +4,6 @@
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Build](https://github.com/yourusername/go-data-pipeline/actions/workflows/main.yml/badge.svg)
 
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Features](#features)
-- [Architecture](#architecture)
-- [Technologies](#technologies)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Usage](#usage)
-- [Testing](#testing)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
-
 ## Introduction
 
 **Chariot** is a robust and efficient data processing tool built with Go. It is designed to extract data from various sources, perform cleaning and transformation, and store the processed data into a PostgreSQL database. This pipeline is ideal for ETL (Extract, Transform, Load) processes, enabling seamless data integration and management.
@@ -48,7 +33,6 @@
 - **Database:** PostgreSQL, MySQL (under dev)
 - **Libraries:**
   - `database/sql` for database interactions
-  - `gorilla/mux` for routing (if applicable)
   - `logrus` for logging
   - `viper` for configuration management
 
