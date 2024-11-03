@@ -4,19 +4,21 @@ import (
 	"encoding/json"
 	"io"
 	"net/http"
+
+	"github.com/yaojiejia/chariot/lib"
 )
 
 type APIReader struct {
 	APIURL string
 	APIKey string
-	Cache  *Cache
+	Cache  *lib.Cache
 }
 
 func NewAPIReader(apiURL, apiKey string) *APIReader {
 	return &APIReader{
 		APIURL: apiURL,
 		APIKey: apiKey,
-		Cache:  NewCache(),
+		Cache:  lib.NewCache(),
 	}
 }
 
