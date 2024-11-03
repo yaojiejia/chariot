@@ -10,11 +10,17 @@ import (
 )
 
 func main() {
-	r := Reader.NewAPIReader("https://api.mockae.com/fakeapi/products/2", "")
+	// r := Reader.NewAPIReader("https://api.mockae.com/fakeapi/products/2", "")
 
-	r.ReadAndCache()
-	id, _ := r.Cache.Get("id")
-	fmt.Println(id)
+	// r.ReadAndCache()
+	// id, _ := r.Get("id")
+	// fmt.Println(id)
+
+	c := Reader.NewCSVReader("melb_data.csv", "melb_data.csv")
+
+	c.ReadAndCache()
+	fmt.Println(c.Get("Rooms"))
+
 	// var c lib.Config
 	// c.GetConfig()
 	// p := db.NewPSQL(c.Host, c.Port, c.User, c.Password, c.Database)

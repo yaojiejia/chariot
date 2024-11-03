@@ -2,6 +2,7 @@ package Reader
 
 import (
 	"encoding/csv"
+	"encoding/json"
 	"os"
 )
 
@@ -16,6 +17,7 @@ func NewCSVReader(fileName, filePath string) *CSVReader {
 	return &CSVReader{
 		FileName: fileName,
 		FilePath: filePath,
+		Cache:    NewCache(),
 	}
 }
 
@@ -37,28 +39,55 @@ func (c *CSVReader) Read() ([][]string, error) {
 
 }
 
-func (c *CSVReader) Connect() (error, string) {
-	// records, err := c.Read()
-	// if err != nil {
-	// 	return err, err.Error()
-	// }
+func (c *CSVReader) ReadAndCache() error {
+	// Read data from CSV
+	records, err := c.Read()
+	if err != nil {
+		return err
+	}
 
-	// c.Cache = NewCache(records)
-	// fmt.Println(c.Cache.Data)
-	return nil, "stored to the cache!"
+	// Ensure we have at least headers
+	if len(records) < 1 {
+		return nil
+	}
 
+	// Get headers from first row
+	headers := records[0]
+
+	// Create maps for each column
+	columnData := make(map[string][]string)
+	for _, header := range headers {
+		columnData[header] = make([]string, 0)
+	}
+
+	// Process each data row
+	for _, row := range records[1:] {
+		// Add values to corresponding column arrays
+		for i, value := range row {
+			if i < len(headers) {
+				columnData[headers[i]] = append(columnData[headers[i]], value)
+			}
+		}
+	}
+
+	// Store each column's data in cache
+	for header, values := range columnData {
+		// Convert values array to JSON string
+		jsonData, err := json.Marshal(values)
+		if err != nil {
+			return err
+		}
+
+		// Store in cache with column header as key
+		err = c.Cache.Set(header, string(jsonData))
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
 }
 
-func (c *CSVReader) Display() string {
-	// records := c.Cache.Data
-
-	// table := tablewriter.NewWriter(os.Stdout)
-	// table.SetHeader(records[0])
-
-	// for _, row := range records[1:] {
-	// 	table.Append(row)
-	// }
-
-	// table.Render()
-	return "CSV data displayed successfully!"
+func (c *CSVReader) Get(key string) (string, error) {
+	return c.Cache.Get(key)
 }

@@ -68,12 +68,6 @@ func (a *APIReader) Read() (string, error) {
 
 }
 
-func (a *APIReader) Connect() (error, string) {
-	// data, err := a.Read()
-	// if err != nil {
-	// 	return err, err.Error()
-	// }
-
-	// a.Cache = NewCache([][]string{{data}})
-	return nil, "stored to the cache!"
+func (a *APIReader) Get(key string) (string, error) {
+	return a.Cache.Get(key)
 }
