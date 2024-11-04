@@ -29,6 +29,16 @@
 4. **Loader:** Inserts the processed data into the PostgreSQL database.
 5. **Logger:** Logs each step for monitoring and debugging purposes.
 
+## Sample Extractor Usage
+```go
+func main(){
+  c := Reader.NewCSVReader("melb_data.csv", "melb_data.csv")
+	c.ReadAndCache()
+	fmt.Println(c.Get("Rooms"))
+}
+```
+It utilizes the powerful Goroutines to achieve a concurrent extraction and storing data into a caching system for 
+later to use
 ## Technologies
 
 - **Language:** Go (Golang)
