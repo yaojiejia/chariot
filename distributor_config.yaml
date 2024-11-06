@@ -1,0 +1,15 @@
+db1:
+  host:
+  port:
+  user:
+  password:
+  database:
+
+db2:
+  host:
+  port:
+  user:
+  password:
+  database:
+
+# keep adding more db configurations as needed

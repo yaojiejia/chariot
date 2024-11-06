@@ -11,6 +11,8 @@ require (
 	github.com/olekukonko/tablewriter v0.0.5 // indirect
 	github.com/redis/go-redis/v9 v9.7.0 // indirect
 	github.com/valkey-io/valkey-go v1.0.48 // indirect
+	go.uber.org/multierr v1.11.0 // indirect
+	go.uber.org/zap v1.27.0 // indirect
 	golang.org/x/sys v0.24.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
